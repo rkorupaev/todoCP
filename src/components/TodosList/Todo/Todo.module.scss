@@ -1,0 +1,93 @@
+.todo__item {
+  background-color: antiquewhite;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  transition: background-color 0.3s;
+  word-break: break-all;
+  min-height: 100px;
+
+  &__finished {
+    background-color: lightgreen;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.todo__text_wrapper {
+  flex-grow: 1;
+  padding: 0 12px;
+}
+
+.todo__title {
+  margin: 0;
+}
+
+.todo__buttons_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.button {
+  border: none;
+  font-size: 0;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  transition-duration: 0.3s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.todo__status_button {
+  background-image: none;
+  margin-bottom: 10px;
+  border: 1.5px solid darkgray;
+  border-radius: 3px;
+
+  &__finished {
+    background-image: url("../../../img/black-tick.png");
+
+  }
+}
+
+.todo__delete_button {
+  background-image: url("../../../img/bin.png");
+}
+
+.todo__edit_button {
+  background-image: url("../../../img/edit.png");
+  margin-bottom: 10px;
+}
+
+.todo__input {
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.todo__textarea {
+  border: none;
+  border-radius: 6px;
+  resize: none;
+  min-height: 50px;
+  width: 100%;
+}
+
+.todo__text {
+  width: 100%;
+}
