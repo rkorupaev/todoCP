@@ -47,6 +47,28 @@ function App() {
         setTodos(todos.filter((item, index) => index !== deleteIndex));
     }
 
+    const editTitle = (editIndex, title) => {
+        setTodos(todos.map((todo, index) => {
+            if (index === editIndex) {
+                todo.title = title;
+                return todo;
+            } else {
+                return todo;
+            }
+        }));
+    }
+
+    const editText = (editIndex, description) => {
+        setTodos(todos.map((todo, index) => {
+            if (index === editIndex) {
+                todo.description = description;
+                return todo;
+            } else {
+                return todo;
+            }
+        }));
+    }
+
     return (
         <div className="App">
             <section>
@@ -61,8 +83,8 @@ function App() {
                            deleteTodo={deleteTodo}
                            onChangeStatusClickHandler={onChangeStatusClickHandler}
                            onEditButtonClickHandler={onEditButtonClickHandler}
-                           setTodoTitle={setTodoTitle}
-                           setTodoDescription={setTodoDescription}/>
+                           editTitle={editTitle}
+                           editText={editText}/>
             </section>
         </div>
     );

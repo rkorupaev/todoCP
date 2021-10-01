@@ -10,9 +10,8 @@ const TodosList = (props) => {
             {props.todosArray.map((todo, index) => <Todo todo={todo} index={index} deleteTodo={props.deleteTodo}
                                                          onChangeStatusClickHandler={props.onChangeStatusClickHandler}
                                                          onEditButtonClickHandler={props.onEditButtonClickHandler}
-                                                         setTodoTitle={props.setTodoTitle}
-                                                         setTodoDescription={props.setTodoDescription}
-            />)}
+                                                         editTitle={props.editTitle}
+                                                         editText={props.editText}/>)}
         </ul>
     )
 };

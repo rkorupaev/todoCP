@@ -11,8 +11,8 @@ const Todo = (props) => {
                 <h3 className={styles.todo__title}>{props.todo.title}</h3>
                 <p className={styles.todo__text}>{props.todo.description}</p>
             </div> : <div className={styles.todo__text_wrapper}>
-                <input type="text" className={styles.todo__input} value={props.todo.title} onChange={(evt) => props.setTodoTitle(evt.target.value)}/>
-                <textarea cols="30" className={styles.todo__textarea} value={props.todo.description} onChange={(evt) => props.setTodoDescription(evt.target.value)}/>
+                <input type="text" className={styles.todo__input} value={props.todo.title} onChange={(evt) => props.editTitle(props.index, evt.target.value)}/>
+                <textarea cols="30" className={styles.todo__textarea} value={props.todo.description} onChange={(evt) => props.editText(props.index, evt.target.value)}/>
             </div>}
             <div className={styles.todo__buttons_wrapper}>
                 <button
@@ -20,7 +20,7 @@ const Todo = (props) => {
                     onClick={() => props.onChangeStatusClickHandler(props.index)}
                     aria-label="change status button">Change status
                 </button>
-                <button className={[styles.button, styles.todo__edit_button].join(' ')}
+                <button className={[styles.button, styles.todo__edit_button].join(' ')} disabled={props.todo.isFinished}
                         onClick={() => props.onEditButtonClickHandler(props.index)} aria-label="Edit todo button">Edit
                     todo
                 </button>
