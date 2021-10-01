@@ -9,6 +9,7 @@ function App() {
     const [todoTitle, setTodoTitle] = useState('');
     const [todoDescription, setTodoDescription] = useState('');
     const [titleIsEmpty, setTitleIsEmpty] = useState(false);
+    const [key, setKey] = useState(0);
 
     const onEditButtonClickHandler = (editIndex) => {
         setTodos(todos.map((todo, index) => {
@@ -35,13 +36,24 @@ function App() {
     const addTodo = (text, description) => {
         if (text.length > 0) {
             setTitleIsEmpty(false);
-            setTodos([...todos, {id: todos.length, title: text, description: description, isFinished: false, isEdditing: false}]);
+            setTodos([...todos, {id: key, title: text, description: description, isFinished: false, isEdditing: false}]);
             setTodoTitle('');
             setTodoDescription('');
+            setKey(key + 1);
         } else {
             setTitleIsEmpty(true);
         }
     }
+
+    useEffect(()=> {
+        setTodos(JSON.parse(localStorage.getItem('todos')));
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
+
+
 
     const deleteTodo = (deleteIndex) => {
         setTodos(todos.filter((item, index) => index !== deleteIndex));
