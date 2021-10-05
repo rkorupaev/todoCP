@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import Newtodo from "./components/Newtodo/Newtodo";
 import TodosList from "./components/TodosList/TodosList";
 
-
 function App() {
     const [todos, setTodos] = useState([]);
     const [todoTitle, setTodoTitle] = useState('');
@@ -36,7 +35,13 @@ function App() {
     const addTodo = (text, description) => {
         if (text.length > 0) {
             setTitleIsEmpty(false);
-            setTodos([...todos, {id: key, title: text, description: description, isFinished: false, isEdditing: false}]);
+            setTodos([...todos, {
+                id: key,
+                title: text,
+                description: description,
+                isFinished: false,
+                isEdditing: false
+            }]);
             setTodoTitle('');
             setTodoDescription('');
             setKey(key + 1);
@@ -45,14 +50,13 @@ function App() {
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         setTodos(JSON.parse(localStorage.getItem('todos')));
     }, [])
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
-
 
 
     const deleteTodo = (deleteIndex) => {
@@ -91,12 +95,7 @@ function App() {
                          setTodoDescription={setTodoDescription}
                          titleIsEmpty={titleIsEmpty}
                          setTitleIsEmpty={setTitleIsEmpty}/>
-                <TodosList todosArray={todos}
-                           deleteTodo={deleteTodo}
-                           onChangeStatusClickHandler={onChangeStatusClickHandler}
-                           onEditButtonClickHandler={onEditButtonClickHandler}
-                           editTitle={editTitle}
-                           editText={editText}/>
+                <TodosList/>
             </section>
         </div>
     );
