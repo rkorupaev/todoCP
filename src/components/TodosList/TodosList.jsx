@@ -6,13 +6,11 @@ import todos from "../../Store/todos";
 
 const TodosList = observer((props) => {
 
+    todos.postToLocalStorage(todos.todos);
+
     return (
         <ul className={styles.todos__list}>
-            {todos.todos.map((todo, index) => <Todo todo={todo} index={index} deleteTodo={props.deleteTodo}
-                                                         onChangeStatusClickHandler={props.onChangeStatusClickHandler}
-                                                         onEditButtonClickHandler={props.onEditButtonClickHandler}
-                                                         editTitle={props.editTitle}
-                                                         editText={props.editText}/>)}
+            {todos.todos.map((todo) => <Todo todo={todo}/>)}
         </ul>
     )
 });

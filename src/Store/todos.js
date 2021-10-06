@@ -1,8 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 class Todos {
-    todos = [{id: 0, title: 'test1', description: 'sdfdsf', isFinished: false, isEditing: false},
-        {id: 1, title: 'adsfsd', description: 'fsdfdsf', isFinished: false, isEditing: false}];
+    todos = [];
 
     newtodo = {title: '', description: '', isEmpty: false};
 
@@ -30,7 +29,6 @@ class Todos {
 
     addTodo(todoTitle, todoText) {
         if (todoTitle.length > 0) {
-            // this.newtodo.isEmpty = false;
             this.todos = [...this.todos, {
                 id: new Date(),
                 title: todoTitle,
@@ -68,6 +66,16 @@ class Todos {
             default:
                 break;
         }
+    }
+
+    postToLocalStorage(todos) {
+        localStorage.setItem('todos', JSON.stringify(todos));
+        console.log(`test post`);
+    }
+
+    getFromLocalStorage() {
+        this.todos = JSON.parse(localStorage.getItem('todos'));
+        console.log(`test get`);
     }
 }
 
